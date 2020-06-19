@@ -1,0 +1,36 @@
+name		:= @pkg_name@
+
+################ Programs ############################################
+
+CC		:= @CC@
+INSTALL		:= @INSTALL@
+INSTALL_DATA	:= ${INSTALL} -m 644
+INSTALL_PROGRAM	:= ${INSTALL} -m 755 -s
+INSTALL_SCORE	:= ${INSTALL} -m 664 -g users /dev/null
+
+################ Destination #########################################
+
+prefix		:= @prefix@
+bindir		:= @bindir@
+scoredir	:= @scoredir@
+datadir		:= @datadir@
+mandir		:= @mandir@
+man6dir		:= @man6dir@
+TMPDIR		:= @TMPDIR@
+builddir	:= @builddir@/${name}
+O		:= .o/
+
+################ Compiler options ####################################
+
+#debug		:= 1
+libs		:= @pkglibs@
+ifdef debug
+    cflags	:= -O0 -ggdb3
+    ldflags	:= -g -rdynamic
+else
+    cflags	:= -Os -g0 -DNDEBUG=1
+    ldflags	:= -s
+endif
+CFLAGS		:= -Wall -Wextra -Wredundant-decls -Wshadow
+cflags		+= -std=c11 @pkgcflags@ ${CFLAGS}
+ldflags		+= @pkgldflags@ ${LDFLAGS}

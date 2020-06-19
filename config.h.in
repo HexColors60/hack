@@ -1,0 +1,37 @@
+// This file is free software, distributed under the BSD license.
+#pragma once
+
+// Define to the one symbol short name of this package.
+#define @pkg_uname@_NAME	"@pkg_name@"
+// Define to the version of this package.
+#define @pkg_uname@_VERSION	@pkg_version@
+// Define to the version string of this package.
+#define @pkg_uname@_VERSTRING	"@pkg_verstr@"
+// Define to the address where bug reports for this package should be sent.
+#define @pkg_uname@_BUGREPORT	"@pkg_bugreport@"
+
+// Use GNU features
+#ifndef _GNU_SOURCE
+    #define _GNU_SOURCE
+#endif
+
+// Define to the location of the score file
+#define @pkg_uname@_SCOREFILE	"@scoredir@/" @pkg_uname@_NAME ".scores"
+
+// Path to saved game files, in user's home directory
+#define _PATH_SAVED_GAMES	"%s/.local/share/"
+
+// saved game in user's home directory
+#define HACK_SAVEFILE	_PATH_SAVED_GAMES "hack.save"
+
+// Path to game configuration files, in user's home directory
+#define _PATH_USER_CONFIG	"%s/.config/"
+
+// The pager
+#define _PATH_PAGER		"less"
+
+// size of terminal screen is (at least) (ROWNO+2) by COLNO
+enum {
+    COLNO = 80,
+    ROWNO = 22
+};
